@@ -1,0 +1,27 @@
+class Solution:
+    def minSwaps(self, arr):
+	    count=0                                     #This is count of no of swaps we do 
+	    n=len(arr)
+		for cs in range(n-1):
+		    pos=cs
+		    cl=0
+		    item=arr[pos]
+		    for i in range(cs+1,n):
+		        if arr[i]<item:
+		            pos+=1
+		    cl+=1    
+		    item,arr[pos]=arr[pos],item
+		    while cs!= pos:
+		        pos=cs
+		        for i in range(cs+1,n):
+		            if arr[i]<item:
+                        pos+=1
+    		    item,arr[pos]=arr[pos],item
+    		    cl+=1
+            count+=cl-1                            # This is for counting swaps in Cycle
+      print(f"array after Cycle sorting : {arr}")
+	    return count
+
+object_of_sol=sol()
+arr=[1,4,2,3]
+print("Min swaps required to sort arra is: {object_of_sol.minSwap(arr)}")
