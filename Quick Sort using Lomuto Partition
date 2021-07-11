@@ -1,0 +1,22 @@
+class Solution:
+    #Function to sort a list using quick sort algorithm.
+    def quickSort(self,arr,low,high):
+        if low<high:
+            p=self.partition(arr,low,high)
+            self.quickSort(arr,low,p-1)
+            self.quickSort(arr,p+1,high)
+        return arr
+    
+    def partition(self,arr,low,high):
+        i=low-1
+        for j in range(low,high):
+            if arr[j]<arr[high]:
+                i+=1
+                arr[i],arr[j]=arr[j],arr[i]
+        i=i+1
+        arr[i],arr[high]=arr[high],arr[i]
+        return i
+                
+arr=[4,1,2,5,3]
+o=Solution()
+print(o.quickSort(arr,0,len(arr)-1))
